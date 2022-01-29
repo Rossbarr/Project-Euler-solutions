@@ -1,5 +1,5 @@
-from re import I
 import string
+import pandas as pd
 
 with open('problems 20-29/data/p022_names.txt', encoding='utf8') as f:
   names = f.readline().replace('"', '').split(",")
@@ -21,5 +21,13 @@ for name in names:
         i += 1
   scores.append(score)
 
-print(scores)
 
+
+df = pd.DataFrame(data = [],
+                  columns = ['name', 'score'])
+for i in range(len(scores)):
+  print(i)
+  df = df.append(pd.DataFrame(data = [names[i], scores[i]],
+                              columns = ['name', 'score']))
+
+print(df.head())
